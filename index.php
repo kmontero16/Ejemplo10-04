@@ -9,9 +9,20 @@ and open the template in the editor.
         <meta charset="UTF-8">
         <title></title>
     </head>
-    <body>
+    <body>        
         <?php
-        // put your code here
+            $usuario="root";
+            $contraseña="";
+            if($mbd = new PDO('mysql:host=localhost;dbname=pruebas', $usuario, $contraseña)){
+                echo "conexion existosa";
+                $val=$mbd->prepare('select * from persona');
+                $val->execute();
+                $arrDatos = $val->fetchAll(PDO::FETCH_ASSOC);
+                echo '<pre>';
+                var_dump($arrDatos);
+                echo '</pre>';
+            }
+            
         ?>
     </body>
 </html>
